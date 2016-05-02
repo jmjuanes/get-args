@@ -1,6 +1,9 @@
 //Get the CLI arguments
 module.exports = function(opt)
 {
+	//Check for string
+	if(typeof opt === 'string'){ opt = { args: opt }; }
+	
 	//Check for undefined options
 	if(typeof opt === 'undefined'){ var opt = {}; }
 
