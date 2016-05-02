@@ -1,30 +1,33 @@
 //Get the CLI arguments
-module.exports = function(args, node_command)
+module.exports = function(opt)
 {
+	//Check for undefined options
+	if(typeof opt === 'undefined'){ var opt = {}; }
+
 	//Check for custom arguments
-	if(typeof args === 'undefined'){ var args = process.argv; }
+	if(typeof opt.args === 'undefined'){ opt.args = process.argv; }
 
 	//Check for string args
-	if(typeof args === 'string'){ args = args.split(' '); }
+	if(typeof opt.args === 'string'){ opt.args = opt.args.split(' '); }
 
 	//Check for node command
-	if(typeof node_command !== 'undefined' && node_command === true)
+	if(typeof opt.node !== 'undefined' && opt.node === true)
 	{
 		//Check if the second command has a .js file
-		if(args[1].indexOf('.js') !== -1){ args.splice(1, 1); }
-		
+		if(opt.args[1].indexOf('.js') !== -1){ opt.args.splice(1, 1); }
+
 		//Check if the first command is node
-		if(args[0] === 'node' || args[0] === 'nodejs'){ args.splice(0, 1); }
+		if(opt.args[0] === 'node' || opt.args[0] === 'nodejs'){ opt.args.splice(0, 1); }
 	}
 
 	//Output arguments
 	var out = { command: '', arguments: [], options: {} };
 
 	//Read all the arguments
-	for(var i = 0; i < args.length; i++)
+	for(var i = 0; i < opt.args.length; i++)
 	{
 		//Get the argument
-		var a = args[i];
+		var a = opt.args[i];
 
 		//Check if argument starts with -
 		if(a.substring(0, 1) !== '-')
@@ -52,15 +55,15 @@ module.exports = function(args, node_command)
 		if(a.substring(0, 1) === '-'){ a = a.replace('-', ''); }
 
 		//Check for invalid argument
-		if(a === '' || a === ' '){ throw new Error('Invalid argument ' + args[i]); }
+		if(a === '' || a === ' '){ throw new Error('Invalid argument ' + opt.args[i]); }
 
 		//Check the next argument
-		if(i + 1 >= args.length)
+		if(i + 1 >= opt.args.length)
 		{
 			//Set the argument as true
 			out.options[a] = true;
 		}
-		else if(args[i + 1].substring(0, 1) === '-')
+		else if(opt.args[i + 1].substring(0, 1) === '-')
 		{
 			//Set the argument as true
 			out.options[a] = true;
@@ -68,7 +71,7 @@ module.exports = function(args, node_command)
 		else
 		{
 			//Set the argument as value
-			out.options[a] = args[i + 1];
+			out.options[a] = opt.args[i + 1];
 
 			//Increment the i
 			i = i + 1;
