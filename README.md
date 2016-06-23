@@ -23,7 +23,7 @@ The script will return an object with the following values:
 - `arguments`: an `array` with all the arguments provided.
 - `options`: an `object` with all the options provided.
 
-## Example of use
+## Example
 
 ```javascript
 //If we run
