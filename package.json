@@ -1,10 +1,10 @@
 {
-	"name": "get-args",
-	"description": "Ridiculous simple way to get the arguments in a Node.js CLI tool",
-	"version": "1.0.0",
-	"author": "Josemi Juanes <josemijuanes@gmail.com>",
-	"license": "MIT",
-	"repository": { "type": "git", "url": "https://github.com/jmjuanes/get-args.git" },
-	"main": "index.js",
-	"keywords": [ "cli", "tool", "arguments" ]
+  "name": "get-args",
+  "description": "Ridiculous simple way to get the arguments in a Node.js CLI tool",
+  "version": "1.0.1",
+  "author": "Josemi Juanes <josemijuanes@gmail.com>",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/jmjuanes/get-args.git" },
+  "main": "index.js",
+  "keywords": [ "cli", "tool", "arguments", "args", "command", "line", "utility", "app", "options", "cmd" ]
 }
