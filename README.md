@@ -46,4 +46,4 @@ var args = getArgs();
 
 ## License
 
-Under the [MIT LICENSE](LICENSE).
+[MIT](LICENSE) &copy; Josemi Juanes.
