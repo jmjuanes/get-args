@@ -1,14 +1,8 @@
 //Get the CLI arguments
-module.exports = function()
+module.exports = function(args)
 {
   //Get the node args
-  var args = process.argv;
-
-  //Check if the second command has a .js file
-  if(args[1].indexOf('.js') !== -1){ args.splice(1, 1); }
-
-  //Check if the first command is node
-  if(args[0] === 'node' || args[0] === 'nodejs'){ args.splice(0, 1); }
+  if(typeof args === 'undefined'){ var args = process.argv.slice(2); } 
 
   //Output arguments
   var out = { command: '', arguments: [], options: {} };
