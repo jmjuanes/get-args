@@ -4,7 +4,22 @@
   "version": "1.0.2",
   "author": "Josemi Juanes <josemijuanes@gmail.com>",
   "license": "MIT",
-  "repository": { "type": "git", "url": "https://github.com/jmjuanes/get-args.git" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmjuanes/get-args.git"
+  },
   "main": "index.js",
-  "keywords": [ "cli", "tool", "arguments", "args", "command", "line", "utility", "app", "options", "cmd" ]
+  "keywords": [
+    "cli",
+    "tool",
+    "arguments",
+    "args",
+    "command",
+    "line",
+    "utility",
+    "app",
+    "options",
+    "cmd"
+  ],
+  "dependencies": {}
 }
