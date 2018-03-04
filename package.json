@@ -1,7 +1,7 @@
 {
   "name": "get-args",
-  "description": "Ridiculous simple way to get the arguments in a Node.js CLI tool",
-  "version": "1.0.2",
+  "description": "Light arguments parser for Node.js",
+  "version": "2.0.0",
   "author": "Josemi Juanes <josemijuanes@gmail.com>",
   "license": "MIT",
   "repository": {
