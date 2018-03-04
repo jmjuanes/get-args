@@ -2,47 +2,64 @@
 
 [![npm](https://img.shields.io/npm/v/get-args.svg?style=flat-square)](https://www.npmjs.com/package/get-args)
 [![npm](https://img.shields.io/npm/dt/get-args.svg?style=flat-square)](https://www.npmjs.com/package/get-args)
+[![npm](https://img.shields.io/npm/l/get-args.svg?style=flat-square)](https://github.com/jmjuanes/get-args)
 
-Ridiculous simple way to get the arguments in a Node.js CLI tool
+Light arguments parser for Node.js
 
 ## Installation
 
 You can install **get-args** using [NPM](https://npmjs.com/package/get-args):
 
 ```
-npm install get-args
+$ npm install --save get-args
 ```
 
 ## Usage
 
-### getArgs()
+```javascript
+var getArgs = require("get-args");
+```
 
-The script will return an object with the following values:
+### arg = getArgs(args)
 
-- `command`: a `string` with the command executed.
-- `arguments`: an `array` with all the arguments provided.
-- `options`: an `object` with all the options provided.
+Returns an object with the result of parsing the array of arguments `args`. If no array is provided, this will parse the command line arguments passed when the Node.js process was launched, extracted from [`process.argv`](https://nodejs.org/api/process.html#process_process_argv).
 
-## Example
+The output object will have the following keys:
+
+- `arguments`: an `array` with all the arguments that did not have an option associated with it.
+- `options`: an `object` with all the single and double hyphened arguments.
+
 
 ```javascript
-//If we run
-// node myfile.js run /path/to/my/file.txt --option1 action1 --option2 action2 --optionBoolean1 --optionBoolean2
+var getArgs = require("get-args");
 
-//Import get-args
-var getArgs = function('get-args');
-
-//Get the arguments
-var args = getArgs();
-
-//args will be:
-// {
-//    command: 'run',
-//    arguments: [ '/path/to/my/file.txt' ],
-//    options: { option1: 'action1', option2: 'action2', optionBoolean1: true, optionBoolean2: true }
-// }
-
+//Parse a
+console.log(getArgs(["run", "--file", "/path/to/file.txt", "-x", "5"]));
+// { arguments: [ 'run' ],
+//   options: { file: '/path/to/file.txt', x: '5' } }
 ```
+
+## Run example
+
+There is a script called `example.js` to test how this module works.
+
+```bash
+$ node example.js foo bar -i 5 -jkw -y 10 --message "Hello world"
+{ arguments: [ 'foo', 'bar' ],
+  options:
+   { i: '5',
+     j: true,
+     k: true,
+     w: true,
+     y: '10',
+     message: 'Hello world' } }
+```
+
+## Limitations 
+
+- `get-args` can't parse arguments with the format `--foo=bar`. 
+
+If you implement a solution that solves anyone of the limitations listed before, feel free to submit your PR.
 
 ## License
 
